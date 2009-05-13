@@ -20,7 +20,7 @@ module ActiveSupport::Cache
     # it's an ugly workaround for the fact that plugins are loaded after initialize_cache
     attr_writer :expires_in
 
-    include Patches::DependencyLoadFix if Dependencies.mechanism == :load
+    include Patches::DependencyLoadFix if ActiveSupport::Dependencies.mechanism == :load
   end
 
   class MemCacheStore < Store
