@@ -1,6 +1,11 @@
 # Fixes for memcache
-require 'memcache/make_cache_key_with_underscore'
-require 'memcache/timeout'
+begin
+  require 'memcache'
+  require 'memcache/make_cache_key_with_underscore'
+  require 'memcache/timeout'
+rescue LoadError
+  puts $stderr.puts "memcache-client not installed, skipping patches"
+end
 
 # Add a default expires_in value for cache stores that use it
 require 'active_support/cache/patches/default_expires_in'
