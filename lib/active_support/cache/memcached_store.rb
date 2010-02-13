@@ -78,6 +78,10 @@ module ActiveSupport
         @data.stats
       end
 
+      def reset
+        @data.reset
+      end
+
       private
         def expires_in(options)
           (options && options[:expires_in]) || 0
