@@ -11,6 +11,7 @@ module ActiveSupport
         addresses = ["localhost"] if addresses.empty?
         @addresses = addresses
         @data = Memcached::Rails.new(addresses, options)
+        extend Strategy::LocalCache
       end
 
       def read(key, options = nil)
