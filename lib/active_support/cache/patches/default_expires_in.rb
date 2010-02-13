@@ -9,7 +9,7 @@ module ActiveSupport
         end
 
         def expires_in_with_default_value(options)
-          ((options && options[:expires_in]) || @expires_in).to_i
+          (options && options.include?(:expires_in) ? options[:expires_in] : @expires_in).to_i
         end
       end
     end
